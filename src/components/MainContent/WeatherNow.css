@@ -1,0 +1,54 @@
+.WeatherNow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  border-radius: 10px;
+  height: 30%;
+  background-color: #ffffff;
+  backdrop-filter: blur(10px);
+
+  color: #3c424b;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 29px 0px;
+  padding: 15px;
+}
+
+.now {
+  font-size: 12px;
+}
+
+.WeatherNow .icon {
+  width: 80px;
+  height: 80px;
+}
+
+.WeatherNow {
+  /* border: solid 1px hwb(237 0% 0%); */
+  /* margin-bottom: 10%; */
+}
+
+.location {
+  font-size: 13px;
+}
+
+.iconTemp {
+  display: flex;
+  align-items: center;
+}
+
+.temp {
+  font-size: 35px;
+}
+
+.loadingInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  border: solid 1px hwb(237 0% 0%);
+  /* margin-bottom: 10%; */
+  height: 150px;
+  justify-content: center;
+}
