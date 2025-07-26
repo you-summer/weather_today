@@ -40,7 +40,7 @@ const WeatherNow = () => {
     weatherKorMap[weatherData.weather[0].main] ||
     "알 수 없음";
 
-  const temp = weatherData.main.temp;
+  const temp = Math.trunc(weatherData.main.temp);
   // const weatherDesc = weatherData.weather[0].main;
   const weatherIcon = weatherData.weather[0].icon;
 

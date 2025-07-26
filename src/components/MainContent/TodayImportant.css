@@ -1,3 +1,53 @@
 .TodayImportant {
-  border: solid 1px purple;
+  /* border: solid 1px purple; */
+  height: 60%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 29px 0px;
+}
+
+.todayImportantWrapper {
+  /* border: solid 1px blue; */
+}
+
+.todayImportant_top {
+  display: flex;
+  gap: 10px;
+}
+
+.todayImportant_top1,
+.todayImportant_top2 {
+  width: 50%;
+  background-color: #f6f6f8;
+  border-radius: 10px;
+  width: calc(50% - 5px);
+}
+
+.todayImportant_top1 {
+}
+
+.todayImportant_bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 2%;
+  padding: 20px 0px;
+}
+
+.airQualityWrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+}
+
+.todayImportant_top1_title {
+  /* border: solid 1px blue; */
+  padding: 15px;
+  font-size: 14px;
+}
+
+.todayImportant_top2_title {
+  padding: 15px;
+  font-size: 14px;
 }

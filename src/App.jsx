@@ -5,6 +5,8 @@ import MainComponent from "./components/MainContent/MainComponent";
 
 export const WeatherContext = createContext();
 export const AddressContext = createContext();
+export const FiveWeatherContext = createContext();
+export const AirDataContext = createContext();
 
 function App() {
   const WEATHER_API_KEY = import.meta.env
@@ -17,6 +19,8 @@ function App() {
   });
   const [weatherData, setWeatherData] = useState(null);
   const [krAddressData, setKrAddressData] = useState(null);
+  const [fiveWeather, setFiveWeather] = useState(null);
+  const [airData, setAirData] = useState();
 
   // 위도와 경도 가져오기
   const getCurrentLocation = () => {
@@ -29,6 +33,7 @@ function App() {
       getWeatherCurrentLocation(lat, lon);
       getKakaoKoreaAddress(lat, lon);
       getFiveWeather(lat, lon);
+      getAirData(lat, lon);
     }, error);
   };
 
@@ -60,6 +65,16 @@ function App() {
     let res = await fetch(url);
     let data = await res.json();
     console.log("5일치예보 : ", data);
+    setFiveWeather(data);
+  };
+
+  // 대기정보 API
+  const getAirData = async (lat, lon) => {
+    let url = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric&lang=kr`;
+    let res = await fetch(url);
+    let data = await res.json();
+    console.log("ㄷ기저보", data);
+    setAirData(data);
   };
 
   const error = () => {
@@ -81,8 +96,12 @@ function App() {
     <div>
       <WeatherContext.Provider value={weatherData}>
         <AddressContext.Provider value={krAddressData}>
-          <Header />
-          <MainComponent />
+          <FiveWeatherContext.Provider value={fiveWeather}>
+            <AirDataContext.Provider value={airData}>
+              <Header />
+              <MainComponent />
+            </AirDataContext.Provider>
+          </FiveWeatherContext.Provider>
         </AddressContext.Provider>
       </WeatherContext.Provider>
     </div>
