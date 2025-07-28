@@ -1,0 +1,29 @@
+.WeatherHourItem_top,
+.WeatherHourItem_bottom {
+  border-radius: 10px;
+  background-color: #f6f6f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.WeatherHourItem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 12.5%;
+}
+
+.WeatherHourItem > div {
+  height: 100px;
+}
+
+/* .WeatherHourItem_top,
+.WeatherHourItem_top > div {
+  font-size: 12px;
+} */
+
+.wind-icon {
+  width: 25px;
+}

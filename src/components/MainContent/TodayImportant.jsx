@@ -4,8 +4,14 @@ import "./TodayImportant.css";
 import { useContext } from "react";
 import { AirDataContext } from "../../App";
 import { WeatherContext } from "../../App";
+import { getMiseAmount } from "../util/get-mise-amount";
 
 import icon from "../../assets/pngegg.png";
+
+import feelsLikeIcon from "../../assets/feelslike.png";
+import pressureIcon from "../../assets/pressure.png";
+import visibilityIcon from "../../assets/visibility.png";
+import humidityIcon from "../../assets/humidity.png";
 
 const TodayImportant = () => {
   const airDataList = useContext(AirDataContext);
@@ -20,6 +26,13 @@ const TodayImportant = () => {
   const ozone = airDataList.list[0].components.o3; //오존
   const no2 = airDataList.list[0].components.no2; //이산화질소
 
+  const airItems = [
+    { text: "미세먼지", data: mise },
+    { text: "초미세먼지", data: chomise },
+    { text: "이산화질소", data: no2 },
+    { text: "오존", data: ozone },
+  ];
+
   const formatTime = (timestamp) => {
     const date = new Date(timestamp * 1000);
     let hour = date.getHours();
@@ -31,16 +44,48 @@ const TodayImportant = () => {
     if (min < 10) {
       min = `0${min}`;
     }
-
     return `${hour}:${min}`;
   };
 
   const sunrise = formatTime(weatherData.sys.sunrise); //일출
   const sunset = formatTime(weatherData.sys.sunset); //일몰
+
+  const sunItems = [
+    { text: "일출", data: `AM ${sunrise}` },
+    { text: "일몰", data: `PM ${sunset}` },
+  ];
+
   const feelsLike = Math.trunc(weatherData.main.feels_like); // 체감온도
   const humidity = weatherData.main.humidity; //습도
   const pressure = weatherData.main.pressure; //기압
   const visibility = weatherData.visibility / 1000; //가시거리
+
+  const todatyItems = [
+    {
+      text: "습도",
+      data: humidity,
+      unit: `%`,
+      icon: humidityIcon,
+    },
+    {
+      text: "체감온도",
+      data: feelsLike,
+      unit: `°C`,
+      icon: feelsLikeIcon,
+    },
+    {
+      text: "기압",
+      data: pressure,
+      unit: `hpa`,
+      icon: pressureIcon,
+    },
+    {
+      text: "가시거리",
+      data: visibility,
+      unit: `km`,
+      icon: visibilityIcon,
+    },
+  ];
 
   console.log("대기정보.....", airDataList);
   console.log("sunset,sunrise", sunset, sunrise);
@@ -52,23 +97,25 @@ const TodayImportant = () => {
         <div className="todayImportant_top">
           <div className="todayImportant_top1">
             <div className="todayImportant_top1_title">
-              대기오염지수
+              <div className="todayImportant_top1_title_left">
+                대기오염지수
+              </div>
+              <div className="todayImportant_top1_title_rigth">
+                <div style={getMiseAmount(mise)}>
+                  {mise}
+                </div>
+              </div>
             </div>
             <div className="airQualityWrapper">
               <AirQualityItem isIconOnly />
-              <AirQualityItem
-                text={"미세먼지"}
-                data={mise}
-              />
-              <AirQualityItem
-                text={"초미세먼지"}
-                data={chomise}
-              />
-              <AirQualityItem
-                text={"이산화질소"}
-                data={no2}
-              />
-              <AirQualityItem text={"오존"} data={ozone} />
+              {airItems.map((item) => {
+                return (
+                  <AirQualityItem
+                    text={item.text}
+                    data={item.data}
+                  />
+                );
+              })}
             </div>
           </div>
           <div className="todayImportant_top2">
@@ -76,42 +123,28 @@ const TodayImportant = () => {
               일출&일몰
             </div>
             <div className="airQualityWrapper">
-              <AirQualityItem
-                text={"일출"}
-                data={`AM ${sunrise}`}
-              />
-              <AirQualityItem
-                text={"일몰"}
-                data={`PM ${sunset}`}
-              />
+              {sunItems.map((item) => {
+                return (
+                  <AirQualityItem
+                    text={item.text}
+                    data={item.data}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>
         <div className="todayImportant_bottom">
-          <TodayImportantItem
-            text={"습도"}
-            data={humidity}
-            unit={`%`}
-            icon={icon}
-          />
-          <TodayImportantItem
-            text={"체감온도"}
-            data={feelsLike}
-            unit={`°C`}
-            icon={icon}
-          />
-          <TodayImportantItem
-            text={"기압"}
-            data={pressure}
-            unit={`hPa`}
-            icon={icon}
-          />
-          <TodayImportantItem
-            text={"가시거리"}
-            data={visibility}
-            unit={`km`}
-            icon={icon}
-          />
+          {todatyItems.map((item) => {
+            return (
+              <TodayImportantItem
+                text={item.text}
+                data={item.data}
+                unit={item.unit}
+                icon={item.icon}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

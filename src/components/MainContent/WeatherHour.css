@@ -1,3 +1,17 @@
 .WeatherHour {
-  border: solid 1px violet;
+  /* border: solid 1px violet; */
+  /* padding: 0px 25px 25px 25px; */
+}
+
+.WeatherHour_div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.WeatherHour_div > div {
+  font-size: 12px;
+}
+.WeatherHour_title {
 }

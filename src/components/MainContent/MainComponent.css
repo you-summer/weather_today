@@ -2,10 +2,10 @@
   display: flex;
   padding-left: 13%;
   padding-right: 13%;
-  padding-top: 2%;
+  padding-top: 1%;
   padding-bottom: 3%;
   gap: 3%;
-  height: 620px;
+  /* height: 620px; */
 }
 
 .LeftSection {
@@ -15,9 +15,15 @@
   display: flex;
   flex-direction: column;
   gap: 5%;
+  border-radius: 10px;
 }
 
 .RightSection {
-  border: solid 1px black;
+  /* border: solid 1px black; */
   width: 70%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  /* height: 600px; */
+  padding: 25px;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 29px 0px;
 }
