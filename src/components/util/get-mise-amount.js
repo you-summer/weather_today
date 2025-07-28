@@ -1,11 +1,23 @@
 export function getMiseAmount(mise) {
   if (mise <= 30) {
-    return { backgroundColor: "green" };
+    return {
+      level: "좋음",
+      style: { backgroundColor: "green" },
+    };
   } else if (31 <= mise && mise <= 80) {
-    return { backgroundColor: "yellow" };
+    return {
+      level: "보통",
+      style: { backgroundColor: "yellow" },
+    };
   } else if (81 <= mise && mise <= 150) {
-    return { backgroundColor: "orange" };
+    return {
+      level: "나쁨",
+      style: { backgroundColor: "orange" },
+    };
   } else if (151 <= mise) {
-    return { backgroundColor: "red" };
+    return {
+      level: "매우 나쁨",
+      style: { backgroundColor: "red" },
+    };
   }
 }

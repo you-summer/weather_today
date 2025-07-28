@@ -90,6 +90,8 @@ const TodayImportant = () => {
   console.log("대기정보.....", airDataList);
   console.log("sunset,sunrise", sunset, sunrise);
 
+  const { level, style } = getMiseAmount(mise);
+
   return (
     <div className="TodayImportant">
       오늘의 주요 정보
@@ -101,8 +103,11 @@ const TodayImportant = () => {
                 대기오염지수
               </div>
               <div className="todayImportant_top1_title_rigth">
-                <div style={getMiseAmount(mise)}>
-                  {mise}
+                <div
+                  style={style}
+                  className="todayImportant_top1_title_right_sub"
+                >
+                  {level}
                 </div>
               </div>
             </div>
