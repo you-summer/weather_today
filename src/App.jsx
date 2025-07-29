@@ -7,6 +7,7 @@ export const WeatherContext = createContext();
 export const AddressContext = createContext();
 export const FiveWeatherContext = createContext();
 export const AirDataContext = createContext();
+export const SearchLocationContext = createContext();
 
 function App() {
   const WEATHER_API_KEY = import.meta.env
@@ -21,6 +22,8 @@ function App() {
   const [krAddressData, setKrAddressData] = useState(null);
   const [fiveWeather, setFiveWeather] = useState(null);
   const [airData, setAirData] = useState();
+  const [searchData, setSearchData] = useState([]);
+  const [changeAddress, setChangeAddress] = useState("");
 
   // 위도와 경도 가져오기
   const getCurrentLocation = () => {
@@ -28,12 +31,13 @@ function App() {
       let lat = location.coords.latitude;
       let lon = location.coords.longitude;
 
+      setChangeAddress("");
       console.log("잘 나오나요?", lat, lon, location);
       setCoords({ lat, lon });
-      getWeatherCurrentLocation(lat, lon);
-      getKakaoKoreaAddress(lat, lon);
-      getFiveWeather(lat, lon);
-      getAirData(lat, lon);
+      // getWeatherCurrentLocation(lat, lon);
+      // getKakaoKoreaAddress(lat, lon);
+      // getFiveWeather(lat, lon);
+      // getAirData(lat, lon);
     }, error);
   };
 
@@ -77,6 +81,28 @@ function App() {
     setAirData(data);
   };
 
+  // 검색어로 주소랑 좌표(x,y)찾기
+  const getSearchAddress = async (search) => {
+    let url = `https://dapi.kakao.com/v2/local/search/address.json?query=${encodeURIComponent(
+      search
+    )}`;
+    let res = await fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `KakaoAK ${KAKAO_API_KEY}`,
+      },
+    });
+    let data = await res.json();
+    console.log("잘가져오나?ㅇㅇㅇㅇ", data);
+    setSearchData(data);
+  };
+
+  // 검색해서 바뀐주소로 다시 렌더링해주기
+  const changeAdderss = (selectChangeAddress) => {
+    setChangeAddress(selectChangeAddress);
+  };
+  console.log("바뀐주소들어오나?", changeAddress);
+
   const error = () => {
     alert("에러임!!");
   };
@@ -85,20 +111,36 @@ function App() {
     getCurrentLocation();
   }, []);
 
-  // useEffect(() => {
-  //   if (coords.lat && coords.lon) {
-  //     getWeatherCurrentLocation(coords.lat, coords.lon);
-  //     getKakaoKoreaAddress(coords.lat, coords.lon);
-  //   }
-  // }, [coords]);
+  useEffect(() => {
+    if (coords.lat && coords.lon) {
+      getWeatherCurrentLocation(coords.lat, coords.lon);
+      getKakaoKoreaAddress(coords.lat, coords.lon);
+      getFiveWeather(coords.lat, coords.lon);
+      getAirData(coords.lat, coords.lon);
+    }
+  }, [coords]);
 
   return (
     <div>
       <WeatherContext.Provider value={weatherData}>
-        <AddressContext.Provider value={krAddressData}>
+        <AddressContext.Provider
+          value={{ krAddressData, changeAddress }}
+        >
           <FiveWeatherContext.Provider value={fiveWeather}>
             <AirDataContext.Provider value={airData}>
-              <Header />
+              <SearchLocationContext.Provider
+                value={{
+                  getSearchAddress,
+                  searchData,
+                  setCoords,
+                  setChangeAddress,
+                }}
+              >
+                <Header
+                  getCurrentLocation={getCurrentLocation}
+                />
+              </SearchLocationContext.Provider>
+
               <MainComponent />
             </AirDataContext.Provider>
           </FiveWeatherContext.Provider>

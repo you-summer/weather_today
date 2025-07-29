@@ -1,7 +1,14 @@
 import "./Header.css";
 import weather from "../../assets/weather.png";
+import SearchLocation from "./SearchLocation";
 
-const Header = () => {
+const Header = ({ getCurrentLocation }) => {
+  const onClickLocation = () => {
+    if (confirm("위치를 새로고침 하시겠습니까?")) {
+      getCurrentLocation();
+    }
+  };
+
   return (
     <div className="Header">
       <div className="header_left">
@@ -15,13 +22,15 @@ const Header = () => {
         </div>
       </div>
       <div className="header_center">
-        <input
-          placeholder="지역명을 입력해주세요..."
-          className="header_input"
-        />
+        <SearchLocation />
       </div>
       <div className="header_right">
-        내위치찾기(나중에구현)
+        <button
+          className="my_location_find"
+          onClick={onClickLocation}
+        >
+          내 위치 찾기
+        </button>
       </div>
     </div>
   );

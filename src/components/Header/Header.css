@@ -12,10 +12,6 @@
   font-size: 15px;
 }
 
-::placeholder {
-  font-size: 15px;
-  /* color: white; */
-}
 .Header > div {
   display: flex;
 }
@@ -23,11 +19,6 @@
 .Header .header_center {
   width: 50%;
   justify-content: center;
-}
-
-.Header .header_center .header_input {
-  width: 50%;
-  padding-left: 35px;
 }
 
 .Header .header_left {
@@ -52,18 +43,16 @@
   object-fit: contain;
 }
 
-.header_input {
-  background-image: url("/src/assets/search.svg");
+.my_location_find {
+  border-radius: 15px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #d3e3fd;
+  font-size: 13px;
+  color: rgb(56, 56, 56);
+  background-image: url("/src/assets/locationFind.png");
   background-repeat: no-repeat;
   background-position: 10px center; /* 왼쪽 안쪽에 아이콘 위치 */
   padding-left: 30px; /* 아이콘 공간 확보 */
-
-  border-radius: 8px;
-  height: 38px;
-  border: none;
-  /* color: white; */
-}
-
-.header_input:focus {
-  outline: none;
+  background-size: 16px 16px;
 }

@@ -48,7 +48,7 @@ const WeatherHour = () => {
           return (
             <WeatherHourItem
               time={realTime}
-              icon={"아이콘"}
+              icon={item.weather[0].icon}
               windIcon={windIcon}
               temp={Math.trunc(item.main.temp)}
               wind={Math.trunc(item.wind.speed)}

@@ -4,7 +4,8 @@ import { useContext } from "react";
 
 const WeatherNow = () => {
   const weatherData = useContext(WeatherContext);
-  const krAddressData = useContext(AddressContext);
+  const { krAddressData, changeAddress } =
+    useContext(AddressContext);
   console.log("잘넘어왔나?", weatherData);
   console.log("이것도 잘 넘어왔나?", krAddressData);
 
@@ -47,9 +48,11 @@ const WeatherNow = () => {
   return (
     <div className="WeatherNow">
       <div className="now">현재</div>
-      <div className="location">
-        {`${region1} ${region2} ${region3}`}
-      </div>
+      {changeAddress ? (
+        <div className="location">{changeAddress}</div>
+      ) : (
+        <div className="location">{`${region1} ${region2} ${region3}`}</div>
+      )}
       <div className="iconTemp">
         <img
           className="icon"

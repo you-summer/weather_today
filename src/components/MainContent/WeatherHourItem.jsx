@@ -12,7 +12,9 @@ const WeatherHourItem = ({
     <div className="WeatherHourItem">
       <div className="WeatherHourItem_top">
         <div>{time}</div>
-        <div>{icon}</div>
+        <img
+          src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
+        />
         <div>{temp}°</div>
       </div>
       <div className="WeatherHourItem_bottom">
