@@ -9,6 +9,10 @@
 - 다크모드</br>
 <img width="1600" height="841" alt="image" src="https://github.com/user-attachments/assets/d360e4a2-8745-49e0-9ed1-167758cf1665" />
 
+- 검색을 통한 타지역 실시간 날씨 정보 구현
+![Honeycam 2025-07-31 14-39-38](https://github.com/user-attachments/assets/910ee7e6-31a5-4e94-91f3-e1a43e5d74c4)
+
+
 ---
 
 
