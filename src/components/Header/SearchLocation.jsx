@@ -34,8 +34,8 @@ const SearchLocation = () => {
   const onClickAddressName = (item) => {
     console.log("선택된 주소", item);
     let address_name = item.address_name;
-    let lon = item.address.x; //경도
-    let lat = item.address.y; //위도
+    let lon = item.x; //경도
+    let lat = item.y; //위도
     setCoords({ lat, lon });
     setSelectArddress(address_name);
     setSearch(""); // 입력값 비우기
@@ -44,7 +44,6 @@ const SearchLocation = () => {
 
   // if(selectAddress)
   useEffect(() => {
-    // changeAddress(selectAddress);
     changeAddress(selectAddress);
   }, [selectAddress]);
 
@@ -76,6 +75,7 @@ const SearchLocation = () => {
                 </button>
               </li>
             ))}
+            1
           </ul>
         )}
     </div>

@@ -98,10 +98,10 @@ function App() {
   };
 
   // 검색해서 바뀐주소로 다시 렌더링해주기
-  const changeAdderss = (selectChangeAddress) => {
-    setChangeAddress(selectChangeAddress);
-  };
-  console.log("바뀐주소들어오나?", changeAddress);
+  // const changeAdderss = (selectChangeAddress) => {
+  //   setChangeAddress(selectChangeAddress);
+  // };
+  // console.log("바뀐주소들어오나?", changeAddress);
 
   const error = () => {
     alert("에러임!!");
@@ -119,6 +119,7 @@ function App() {
       getAirData(coords.lat, coords.lon);
     }
   }, [coords]);
+  console.log("coords 확인:", coords);
 
   return (
     <div>
