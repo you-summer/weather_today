@@ -97,11 +97,12 @@ function App() {
     setSearchData(data);
   };
 
-  // 검색해서 바뀐주소로 다시 렌더링해주기
-  // const changeAdderss = (selectChangeAddress) => {
-  //   setChangeAddress(selectChangeAddress);
-  // };
-  // console.log("바뀐주소들어오나?", changeAddress);
+  // 로딩기능 만들기
+  const isLoading =
+    !weatherData ||
+    !krAddressData ||
+    !fiveWeather ||
+    !airData;
 
   const error = () => {
     alert("에러임!!");
@@ -123,30 +124,46 @@ function App() {
 
   return (
     <div>
-      <WeatherContext.Provider value={weatherData}>
-        <AddressContext.Provider
-          value={{ krAddressData, changeAddress }}
-        >
-          <FiveWeatherContext.Provider value={fiveWeather}>
-            <AirDataContext.Provider value={airData}>
-              <SearchLocationContext.Provider
-                value={{
-                  getSearchAddress,
-                  searchData,
-                  setCoords,
-                  setChangeAddress,
-                }}
-              >
-                <Header
-                  getCurrentLocation={getCurrentLocation}
-                />
-              </SearchLocationContext.Provider>
+      {isLoading ? (
+        <div className="AppLoading">
+          <div
+            className="spinner-border text-primary"
+            role="status"
+          >
+            <span className="visually-hidden">
+              Loading...
+            </span>
+          </div>
+          <div>날씨 정보를 불러오는 중입니다...</div>
+        </div>
+      ) : (
+        <WeatherContext.Provider value={weatherData}>
+          <AddressContext.Provider
+            value={{ krAddressData, changeAddress }}
+          >
+            <FiveWeatherContext.Provider
+              value={fiveWeather}
+            >
+              <AirDataContext.Provider value={airData}>
+                <SearchLocationContext.Provider
+                  value={{
+                    getSearchAddress,
+                    searchData,
+                    setCoords,
+                    setChangeAddress,
+                  }}
+                >
+                  <Header
+                    getCurrentLocation={getCurrentLocation}
+                  />
+                </SearchLocationContext.Provider>
 
-              <MainComponent />
-            </AirDataContext.Provider>
-          </FiveWeatherContext.Provider>
-        </AddressContext.Provider>
-      </WeatherContext.Provider>
+                <MainComponent />
+              </AirDataContext.Provider>
+            </FiveWeatherContext.Provider>
+          </AddressContext.Provider>
+        </WeatherContext.Provider>
+      )}
     </div>
   );
 }
