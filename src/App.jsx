@@ -8,6 +8,7 @@ export const AddressContext = createContext();
 export const FiveWeatherContext = createContext();
 export const AirDataContext = createContext();
 export const SearchLocationContext = createContext();
+export const IsDarkContext = createContext();
 
 function App() {
   const WEATHER_API_KEY = import.meta.env
@@ -24,6 +25,12 @@ function App() {
   const [airData, setAirData] = useState();
   const [searchData, setSearchData] = useState([]);
   const [changeAddress, setChangeAddress] = useState("");
+  const [isDark, setIsDark] = useState(false);
+
+  // 다크모드
+  const onDark = () => {
+    setIsDark(!isDark);
+  };
 
   // 위도와 경도 가져오기
   const getCurrentLocation = () => {
@@ -137,32 +144,38 @@ function App() {
           <div>날씨 정보를 불러오는 중입니다...</div>
         </div>
       ) : (
-        <WeatherContext.Provider value={weatherData}>
-          <AddressContext.Provider
-            value={{ krAddressData, changeAddress }}
-          >
-            <FiveWeatherContext.Provider
-              value={fiveWeather}
+        <IsDarkContext.Provider value={isDark}>
+          <WeatherContext.Provider value={weatherData}>
+            <AddressContext.Provider
+              value={{ krAddressData, changeAddress }}
             >
-              <AirDataContext.Provider value={airData}>
-                <SearchLocationContext.Provider
-                  value={{
-                    getSearchAddress,
-                    searchData,
-                    setCoords,
-                    setChangeAddress,
-                  }}
-                >
-                  <Header
-                    getCurrentLocation={getCurrentLocation}
-                  />
-                </SearchLocationContext.Provider>
+              <FiveWeatherContext.Provider
+                value={fiveWeather}
+              >
+                <AirDataContext.Provider value={airData}>
+                  <SearchLocationContext.Provider
+                    value={{
+                      getSearchAddress,
+                      searchData,
+                      setCoords,
+                      setChangeAddress,
+                    }}
+                  >
+                    <Header
+                      getCurrentLocation={
+                        getCurrentLocation
+                      }
+                      onDark={onDark}
+                      isDark={isDark}
+                    />
+                  </SearchLocationContext.Provider>
 
-                <MainComponent />
-              </AirDataContext.Provider>
-            </FiveWeatherContext.Provider>
-          </AddressContext.Provider>
-        </WeatherContext.Provider>
+                  <MainComponent />
+                </AirDataContext.Provider>
+              </FiveWeatherContext.Provider>
+            </AddressContext.Provider>
+          </WeatherContext.Provider>
+        </IsDarkContext.Provider>
       )}
     </div>
   );

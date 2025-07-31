@@ -1,8 +1,16 @@
 import "./Header.css";
 import weather from "../../assets/weather.png";
 import SearchLocation from "./SearchLocation";
+import { useContext } from "react";
+import { IsDarkContext } from "../../App";
 
-const Header = ({ getCurrentLocation }) => {
+const Header = ({ getCurrentLocation, onDark }) => {
+  const isDark = useContext(IsDarkContext);
+
+  const onClickDarkMode = () => {
+    onDark();
+  };
+
   const onClickLocation = () => {
     if (confirm("위치를 새로고침 하시겠습니까?")) {
       getCurrentLocation();
@@ -25,6 +33,9 @@ const Header = ({ getCurrentLocation }) => {
         <SearchLocation />
       </div>
       <div className="header_right">
+        <div className="darkMode" onClick={onClickDarkMode}>
+          {isDark ? "🌙" : "☀️"}
+        </div>
         <button
           className="my_location_find"
           onClick={onClickLocation}
