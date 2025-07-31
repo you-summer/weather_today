@@ -3,9 +3,12 @@ import WeatherHourItem from "./WeatherHourItem";
 import { FiveWeatherContext } from "../../App";
 import { useContext } from "react";
 import windIcon from "../../assets/windIcon.png";
+import darkwindSpeed from "../../assets/DarkwindSpeed.png";
+import { IsDarkContext } from "../../App";
 
 const WeatherHour = () => {
   const fiveWeatherData = useContext(FiveWeatherContext);
+  const isDark = useContext(IsDarkContext);
   console.log(
     "시간별예보 제대로 넘어왓나봅시다",
     fiveWeatherData
@@ -49,7 +52,9 @@ const WeatherHour = () => {
             <WeatherHourItem
               time={realTime}
               icon={item.weather[0].icon}
-              windIcon={windIcon}
+              windIcon={`${
+                isDark ? darkwindSpeed : windIcon
+              }`}
               temp={Math.trunc(item.main.temp)}
               wind={Math.trunc(item.wind.speed)}
               deg={deg}

@@ -1,4 +1,6 @@
 import "./WeatherHourItem.css";
+import { useContext } from "react";
+import { IsDarkContext } from "../../App";
 
 const WeatherHourItem = ({
   time,
@@ -8,16 +10,26 @@ const WeatherHourItem = ({
   deg,
   windIcon,
 }) => {
+  const isDark = useContext(IsDarkContext);
+
   return (
     <div className="WeatherHourItem">
-      <div className="WeatherHourItem_top">
+      <div
+        className={`WeatherHourItem_top ${
+          isDark ? " dark" : ""
+        }`}
+      >
         <div>{time}</div>
         <img
           src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
         />
         <div>{temp}°</div>
       </div>
-      <div className="WeatherHourItem_bottom">
+      <div
+        className={`WeatherHourItem_bottom ${
+          isDark ? " dark" : ""
+        }`}
+      >
         <div>{time}</div>
         <img
           src={windIcon}

@@ -1,12 +1,15 @@
 import "./SearchLocation.css";
 import { useState, useContext, useEffect } from "react";
 import { SearchLocationContext } from "../../App";
+import { IsDarkContext } from "../../App";
 
 const SearchLocation = () => {
   const [search, setSearch] = useState(""); // 검색어를 저장
   const [selectAddress, setSelectArddress] = useState(""); // 검색한 주소 이름
   const [isDropdownOpen, setIsDropdownOpen] =
     useState(false);
+
+  const isDark = useContext(IsDarkContext);
 
   const {
     getSearchAddress,
@@ -55,7 +58,7 @@ const SearchLocation = () => {
     <div>
       <input
         placeholder="지역명을 입력해주세요..."
-        className="header_input"
+        className={`header_input ${isDark ? " dark" : ""}`}
         onChange={onChangeSearch}
         value={search}
       />

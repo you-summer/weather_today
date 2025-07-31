@@ -1,10 +1,14 @@
 import { useContext } from "react";
 import "./WeatherWeek.css";
 import WeatherWeekItem from "./WeatherWeekItem";
-import { FiveWeatherContext } from "../../App";
+import {
+  FiveWeatherContext,
+  IsDarkContext,
+} from "../../App";
 
 const WeatherWeek = () => {
   const fiveWeatherList = useContext(FiveWeatherContext);
+  const isDark = useContext(IsDarkContext);
 
   let getFiveWeatherList;
 
@@ -25,7 +29,7 @@ const WeatherWeek = () => {
   // console.log("5일치....", fiveWeatherList);
   console.log("5일치 중에 정오인것만", getFiveWeatherList);
   return (
-    <div className="WeatherWeek">
+    <div className={`WeatherWeek ${isDark ? " dark" : ""}`}>
       {getFiveWeatherList.map((list) => {
         return <WeatherWeekItem {...list} key={list.dt} />;
       })}

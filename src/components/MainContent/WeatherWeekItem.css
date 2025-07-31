@@ -15,6 +15,7 @@ img {
 .temp1 {
   font-size: 16px;
   color: #3c424b;
+  transition: color 0.3 ease;
 }
 
 .temp2 {
@@ -31,4 +32,13 @@ img {
 .dateYoil {
   color: gray;
   font-size: 12px;
+  transition: color 0.3 ease;
+}
+
+.temp1.dark,
+.date.dark,
+.dateYoil.dark {
+  color: #e0e0e0;
+  transition: color 0.3 ease;
+  /* background-color: #252525; */
 }

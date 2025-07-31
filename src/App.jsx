@@ -129,6 +129,16 @@ function App() {
   }, [coords]);
   console.log("coords 확인:", coords);
 
+  useEffect(() => {
+    if (isDark) {
+      document.querySelector("body").classList.add("dark");
+    } else {
+      document
+        .querySelector("body")
+        .classList.remove("dark");
+    }
+  }, [isDark]);
+
   return (
     <div>
       {isLoading ? (

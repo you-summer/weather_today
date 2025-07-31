@@ -6,6 +6,8 @@ import { AirDataContext } from "../../App";
 import { WeatherContext } from "../../App";
 import { getMiseAmount } from "../util/get-mise-amount";
 
+import { IsDarkContext } from "../../App";
+
 import icon from "../../assets/pngegg.png";
 
 import feelsLikeIcon from "../../assets/feelslike.png";
@@ -13,9 +15,15 @@ import pressureIcon from "../../assets/pressure.png";
 import visibilityIcon from "../../assets/visibility.png";
 import humidityIcon from "../../assets/humidity.png";
 
+import darkFeelsLikeIcon from "../../assets/darkFeelslike.png";
+import darkPressureIcon from "../../assets/darkPressure.png";
+import darkVisibilityIcon from "../../assets/darkVisibility.png";
+import darkHumidityIcon from "../../assets/darkHumidity.png";
+
 const TodayImportant = () => {
   const airDataList = useContext(AirDataContext);
   const weatherData = useContext(WeatherContext);
+  const isDark = useContext(IsDarkContext);
 
   if (!airDataList || !weatherData) {
     return <div>오늘의 날씨 리턴중...</div>;
@@ -60,30 +68,34 @@ const TodayImportant = () => {
   const pressure = weatherData.main.pressure; //기압
   const visibility = weatherData.visibility / 1000; //가시거리
 
+  const getIcon = (darkIcon, lightIcon) => {
+    return isDark ? darkIcon : lightIcon;
+  };
+
   const todatyItems = [
     {
       text: "습도",
       data: humidity,
       unit: `%`,
-      icon: humidityIcon,
+      icon: getIcon(darkHumidityIcon, humidityIcon),
     },
     {
       text: "체감온도",
       data: feelsLike,
       unit: `°C`,
-      icon: feelsLikeIcon,
+      icon: getIcon(darkFeelsLikeIcon, feelsLikeIcon),
     },
     {
       text: "기압",
       data: pressure,
       unit: `hpa`,
-      icon: pressureIcon,
+      icon: getIcon(darkPressureIcon, pressureIcon),
     },
     {
       text: "가시거리",
       data: visibility,
       unit: `km`,
-      icon: visibilityIcon,
+      icon: getIcon(darkVisibilityIcon, visibilityIcon),
     },
   ];
 
@@ -97,7 +109,11 @@ const TodayImportant = () => {
       오늘의 주요 정보
       <div className="todayImportantWrapper">
         <div className="todayImportant_top">
-          <div className="todayImportant_top1">
+          <div
+            className={`todayImportant_top1 ${
+              isDark ? " dark" : ""
+            }`}
+          >
             <div className="todayImportant_top1_title">
               <div className="todayImportant_top1_title_left">
                 대기오염지수
@@ -123,7 +139,11 @@ const TodayImportant = () => {
               })}
             </div>
           </div>
-          <div className="todayImportant_top2">
+          <div
+            className={`todayImportant_top2 ${
+              isDark ? " dark" : ""
+            }`}
+          >
             <div className="todayImportant_top2_title">
               일출&일몰
             </div>

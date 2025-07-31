@@ -1,7 +1,11 @@
 import "./WeatherWeekItem.css";
+import { useContext } from "react";
+import { IsDarkContext } from "../../App";
 
 const WeatherWeekItem = ({ main, dt, dt_txt, weather }) => {
   //   console.log("잘넘어왔나보자", main, dt, dt_txt, weather);
+
+  const isDark = useContext(IsDarkContext);
 
   const temp_max = Math.trunc(main.temp_max);
   const temp_min = Math.trunc(main.temp_min);
@@ -32,14 +36,18 @@ const WeatherWeekItem = ({ main, dt, dt_txt, weather }) => {
             alt="이미지"
           />
         </div>
-        <div className="temp1">{temp_max}°</div>
+        <div className={`temp1 ${isDark ? " dark" : ""}`}>
+          {temp_max}°
+        </div>
         <div className="temp2">{temp_min}°</div>
       </div>
 
-      <div className="date">
+      <div className={`date ${isDark ? " dark" : ""}`}>
         {month}월 {day}일
       </div>
-      <div className="dateYoil">{weekdayNames2}</div>
+      <div className={`dateYoil ${isDark ? " dark" : ""}`}>
+        {weekdayNames2}
+      </div>
     </div>
   );
 };

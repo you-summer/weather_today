@@ -7,6 +7,9 @@
   padding: 15px;
   background-color: #f6f6f8;
   gap: 10px;
+
+  transition: background-color 0.3s ease;
+  transition: color 0.3 ease;
 }
 
 .todayImportantItem_content {
@@ -21,4 +24,10 @@
 
 .img {
   width: 30px;
+}
+
+.TodayImportantItem.dark {
+  background-color: #202020;
+  transition: background-color 0.3s ease;
+  transition: color 0.3 ease;
 }

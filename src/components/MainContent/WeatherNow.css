@@ -16,6 +16,9 @@
   color: #3c424b;
   box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 29px 0px;
   padding: 15px;
+
+  transition: background-color 0.3s ease;
+  transition: color 0.3 ease;
 }
 
 .now {
@@ -56,4 +59,10 @@
   height: 240px;
   /* height: 40%; */
   justify-content: center;
+}
+
+.WeatherNow.dark {
+  background-color: #252525;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 29px 0px;
+  color: #e0e0e0;
 }

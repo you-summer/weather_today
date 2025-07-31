@@ -1,6 +1,7 @@
 body {
   margin: 0;
   color: #333;
+  transition: background-color 0.3s ease;
 }
 
 .AppLoading {
@@ -10,4 +11,10 @@ body {
   height: 684px;
   justify-content: center;
   gap: 10px;
+}
+
+.App.dark {
+  background-color: #121212;
+  transition: background-color 0.3s ease;
+  transition: color 0.3 ease;
 }

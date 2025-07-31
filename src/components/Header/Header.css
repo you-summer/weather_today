@@ -10,6 +10,9 @@
   display: flex;
   align-items: center;
   font-size: 15px;
+
+  transition: background-color 0.3s ease;
+  transition: color 0.3 ease;
 }
 
 .Header > div {
@@ -61,4 +64,15 @@
 
 .darkMode {
   cursor: pointer;
+}
+
+.Header.dark {
+  background-color: #121212;
+
+  transition: background-color 0.3s ease;
+  transition: color 0.3 ease;
+}
+.text.dark {
+  color: white;
+  transition: color 0.3 ease;
 }

@@ -1,5 +1,6 @@
 import "./Header.css";
 import weather from "../../assets/weather.png";
+import darkWeather from "../../assets/darkWeather.png";
 import SearchLocation from "./SearchLocation";
 import { useContext } from "react";
 import { IsDarkContext } from "../../App";
@@ -18,15 +19,17 @@ const Header = ({ getCurrentLocation, onDark }) => {
   };
 
   return (
-    <div className="Header">
+    <div className={`Header ${isDark ? " dark" : ""}`}>
       <div className="header_left">
         <div className="left-wrapper">
           <img
-            src={weather}
+            src={isDark ? darkWeather : weather}
             alt="날씨 아이콘"
             className="weather-icon"
           />
-          <span>now weather</span>
+          <span className={`text ${isDark ? "dark" : ""}`}>
+            now weather
+          </span>
         </div>
       </div>
       <div className="header_center">

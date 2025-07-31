@@ -3,7 +3,7 @@
   /* height: 60%; */
 
   /* padding: 25px; */
-  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 29px 0px;
+  /* box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 29px 0px; */
 }
 
 .todayImportantWrapper {
@@ -21,6 +21,8 @@
   background-color: #f6f6f8;
   border-radius: 10px;
   width: calc(50% - 5px);
+  transition: background-color 0.3s ease;
+  transition: color 0.3 ease;
 }
 
 .todayImportant_top1 {
@@ -71,4 +73,11 @@
   border-radius: 10px;
   padding: 2px 5px;
   font-size: 12px;
+}
+
+.todayImportant_top1.dark,
+.todayImportant_top2.dark {
+  background-color: #202020;
+  transition: background-color 0.3s ease;
+  transition: color 0.3 ease;
 }

@@ -1,9 +1,14 @@
-import { AddressContext, WeatherContext } from "../../App";
+import {
+  AddressContext,
+  WeatherContext,
+  IsDarkContext,
+} from "../../App";
 import "./WeatherNow.css";
 import { useContext } from "react";
 
 const WeatherNow = () => {
   const weatherData = useContext(WeatherContext);
+  const isDark = useContext(IsDarkContext);
   const { krAddressData, changeAddress } =
     useContext(AddressContext);
   console.log("잘넘어왔나?", weatherData);
@@ -46,7 +51,7 @@ const WeatherNow = () => {
   const weatherIcon = weatherData.weather[0].icon;
 
   return (
-    <div className="WeatherNow">
+    <div className={`WeatherNow${isDark ? " dark" : ""}`}>
       <div className="now">현재</div>
       {changeAddress ? (
         <div className="location">{changeAddress}</div>
