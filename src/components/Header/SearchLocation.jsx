@@ -78,7 +78,6 @@ const SearchLocation = () => {
                 </button>
               </li>
             ))}
-            1
           </ul>
         )}
     </div>
