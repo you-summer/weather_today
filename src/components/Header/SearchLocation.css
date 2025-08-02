@@ -33,3 +33,9 @@
   transition: background-color 0.3s ease;
   transition: color 0.3 ease;
 }
+
+@media screen and (max-width: 480px) {
+  .header_input {
+    width: 200px;
+  }
+}
