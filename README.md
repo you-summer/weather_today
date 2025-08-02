@@ -1,5 +1,6 @@
 # 📝 now weather
 > React로 만든 날씨예보 웹 애플리케이션입니다.</br> 사용자의 현재 위치나 검색한 지역의 실시간 날씨, 시간대별 예보, 주간 예보, 대기질 등 다양한 정보를 직관적인 UI로 확인할 수 있습니다. 다크모드도 적용하였습니다.</br>
+> 👉 배포된 웹사이트 바로가기 : [https://egg-to-do-list.vercel.app/](https://weather-today-two.vercel.app/)
 ---
 
 ## 💻 미리보기
