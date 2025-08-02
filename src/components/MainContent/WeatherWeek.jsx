@@ -27,7 +27,7 @@ const WeatherWeek = () => {
   // console.log(test);
 
   // console.log("5일치....", fiveWeatherList);
-  console.log("5일치 중에 정오인것만", getFiveWeatherList);
+  // console.log("5일치 중에 정오인것만", getFiveWeatherList);
   return (
     <div className={`WeatherWeek ${isDark ? " dark" : ""}`}>
       {getFiveWeatherList.map((list) => {

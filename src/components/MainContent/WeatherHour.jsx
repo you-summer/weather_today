@@ -9,13 +9,13 @@ import { IsDarkContext } from "../../App";
 const WeatherHour = () => {
   const fiveWeatherData = useContext(FiveWeatherContext);
   const isDark = useContext(IsDarkContext);
-  console.log(
-    "시간별예보 제대로 넘어왓나봅시다",
-    fiveWeatherData
-  );
+  // console.log(
+  //   "시간별예보 제대로 넘어왓나봅시다",
+  //   fiveWeatherData
+  // );
 
   const date = new Date().getTime();
-  console.log(date);
+  // console.log(date);
 
   if (!fiveWeatherData) {
     return <div>로딩중....</div>;

@@ -21,7 +21,7 @@ const SearchLocation = () => {
   const onChangeSearch = (e) => {
     setSearch(e.target.value);
     setIsDropdownOpen(true);
-    console.log("검색", search);
+    // console.log("검색", search);
   };
 
   useEffect(() => {
@@ -32,10 +32,10 @@ const SearchLocation = () => {
     // setSearchResult(data);
   }, [search]);
 
-  console.log("searchData", searchData);
+  // console.log("searchData", searchData);
 
   const onClickAddressName = (item) => {
-    console.log("선택된 주소", item);
+    // console.log("선택된 주소", item);
     let address_name = item.address_name;
     let lon = item.x; //경도
     let lat = item.y; //위도

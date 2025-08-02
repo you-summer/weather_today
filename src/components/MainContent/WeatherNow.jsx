@@ -11,8 +11,8 @@ const WeatherNow = () => {
   const isDark = useContext(IsDarkContext);
   const { krAddressData, changeAddress } =
     useContext(AddressContext);
-  console.log("잘넘어왔나?", weatherData);
-  console.log("이것도 잘 넘어왔나?", krAddressData);
+  // console.log("잘넘어왔나?", weatherData);
+  // console.log("이것도 잘 넘어왔나?", krAddressData);
 
   if (!krAddressData || !weatherData) {
     return (

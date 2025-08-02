@@ -99,8 +99,8 @@ const TodayImportant = () => {
     },
   ];
 
-  console.log("대기정보.....", airDataList);
-  console.log("sunset,sunrise", sunset, sunrise);
+  // console.log("대기정보.....", airDataList);
+  // console.log("sunset,sunrise", sunset, sunrise);
 
   const { level, style } = getMiseAmount(mise);
 
