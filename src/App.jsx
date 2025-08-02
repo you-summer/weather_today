@@ -39,7 +39,7 @@ function App() {
       let lon = location.coords.longitude;
 
       setChangeAddress("");
-      console.log("잘 나오나요?", lat, lon, location);
+      // console.log("잘 나오나요?", lat, lon, location);
       setCoords({ lat, lon });
       // getWeatherCurrentLocation(lat, lon);
       // getKakaoKoreaAddress(lat, lon);
@@ -53,7 +53,7 @@ function App() {
     let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`;
     let res = await fetch(url);
     let data = await res.json();
-    console.log(data);
+    // console.log(data);
     setWeatherData(data);
   };
 
@@ -66,7 +66,7 @@ function App() {
       },
     });
     let data = await res.json();
-    console.log("한글주소 : ", data);
+    // console.log("한글주소 : ", data);
     setKrAddressData(data);
   };
 
@@ -75,7 +75,7 @@ function App() {
     let url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric&lang=kr`;
     let res = await fetch(url);
     let data = await res.json();
-    console.log("5일치예보 : ", data);
+    // console.log("5일치예보 : ", data);
     setFiveWeather(data);
   };
 
@@ -84,7 +84,7 @@ function App() {
     let url = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric&lang=kr`;
     let res = await fetch(url);
     let data = await res.json();
-    console.log("ㄷ기저보", data);
+    // console.log("ㄷ기저보", data);
     setAirData(data);
   };
 
@@ -100,7 +100,7 @@ function App() {
       },
     });
     let data = await res.json();
-    console.log("잘가져오나?ㅇㅇㅇㅇ", data);
+    // console.log("잘가져오나?ㅇㅇㅇㅇ", data);
     setSearchData(data);
   };
 
@@ -127,7 +127,7 @@ function App() {
       getAirData(coords.lat, coords.lon);
     }
   }, [coords]);
-  console.log("coords 확인:", coords);
+  // console.log("coords 확인:", coords);
 
   useEffect(() => {
     if (isDark) {
