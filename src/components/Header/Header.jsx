@@ -43,7 +43,7 @@ const Header = ({ getCurrentLocation, onDark }) => {
           className="my_location_find"
           onClick={onClickLocation}
         >
-          내 위치 찾기
+          <span>내 위치 찾기</span>
         </button>
       </div>
     </div>

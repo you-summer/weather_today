@@ -79,5 +79,16 @@
   transition: color 0.3 ease;
 }
 
-@media screen and(max-width : 480px) {
+@media screen and (max-width: 480px) {
+  .left-wrapper .text {
+    display: none;
+  }
+  .my_location_find > span {
+    display: none;
+  }
+  .my_location_find {
+    width: 20px;
+    height: 20px;
+    padding-left: 25px;
+  }
 }

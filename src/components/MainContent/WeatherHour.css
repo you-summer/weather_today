@@ -13,5 +13,10 @@
 .WeatherHour_div > div {
   font-size: 12px;
 }
-.WeatherHour_title {
+
+@media screen and (max-width: 480px) {
+  .WeatherHour_div {
+    flex-wrap: wrap;
+    justify-content: normal;
+  }
 }
