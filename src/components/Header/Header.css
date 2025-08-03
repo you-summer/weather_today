@@ -91,4 +91,7 @@
     height: 20px;
     padding-left: 25px;
   }
+  .Header .header_right {
+    padding: 0px;
+  }
 }
