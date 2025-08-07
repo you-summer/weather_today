@@ -112,7 +112,10 @@ function App() {
     !airData;
 
   const error = () => {
-    alert("에러임!!");
+    alert(
+      "위치 정보를 가져올 수 없어 기본 위치(서울 종로구)로 설정합니다."
+    );
+    setCoords({ lat: 37.5665, lon: 126.978 });
   };
 
   useEffect(() => {
