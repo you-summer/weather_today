@@ -102,22 +102,16 @@ const TodayImportant = () => {
   // console.log("대기정보.....", airDataList);
   // console.log("sunset,sunrise", sunset, sunrise);
 
-  const { level, style } = getMiseAmount(mise);
+  const { level, style } = getMiseAmount(mise) || {};
 
   return (
     <div className="TodayImportant">
       오늘의 주요 정보
       <div className="todayImportantWrapper">
         <div className="todayImportant_top">
-          <div
-            className={`todayImportant_top1 ${
-              isDark ? " dark" : ""
-            }`}
-          >
+          <div className={`todayImportant_top1 ${isDark ? " dark" : ""}`}>
             <div className="todayImportant_top1_title">
-              <div className="todayImportant_top1_title_left">
-                대기오염지수
-              </div>
+              <div className="todayImportant_top1_title_left">대기오염지수</div>
               <div className="todayImportant_top1_title_rigth">
                 <div
                   style={style}
@@ -130,31 +124,15 @@ const TodayImportant = () => {
             <div className="airQualityWrapper">
               <AirQualityItem isIconOnly />
               {airItems.map((item) => {
-                return (
-                  <AirQualityItem
-                    text={item.text}
-                    data={item.data}
-                  />
-                );
+                return <AirQualityItem text={item.text} data={item.data} />;
               })}
             </div>
           </div>
-          <div
-            className={`todayImportant_top2 ${
-              isDark ? " dark" : ""
-            }`}
-          >
-            <div className="todayImportant_top2_title">
-              일출&일몰
-            </div>
+          <div className={`todayImportant_top2 ${isDark ? " dark" : ""}`}>
+            <div className="todayImportant_top2_title">일출&일몰</div>
             <div className="airQualityWrapper">
               {sunItems.map((item) => {
-                return (
-                  <AirQualityItem
-                    text={item.text}
-                    data={item.data}
-                  />
-                );
+                return <AirQualityItem text={item.text} data={item.data} />;
               })}
             </div>
           </div>

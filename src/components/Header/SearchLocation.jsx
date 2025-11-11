@@ -6,17 +6,12 @@ import { IsDarkContext } from "../../App";
 const SearchLocation = () => {
   const [search, setSearch] = useState(""); // 검색어를 저장
   const [selectAddress, setSelectArddress] = useState(""); // 검색한 주소 이름
-  const [isDropdownOpen, setIsDropdownOpen] =
-    useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const isDark = useContext(IsDarkContext);
 
-  const {
-    getSearchAddress,
-    searchData,
-    setCoords,
-    setChangeAddress,
-  } = useContext(SearchLocationContext);
+  const { getSearchAddress, searchData, setCoords, setChangeAddress } =
+    useContext(SearchLocationContext);
 
   const onChangeSearch = (e) => {
     setSearch(e.target.value);

@@ -9,17 +9,13 @@ import { IsDarkContext } from "../../App";
 const MainComponent = () => {
   const isDark = useContext(IsDarkContext);
   return (
-    <div
-      className={`MainComponent${isDark ? " dark" : ""}`}
-    >
+    <div className={`MainComponent${isDark ? " dark" : ""}`}>
       <div className="LeftSection">
         <WeatherNow />
         <WeatherWeek />
       </div>
 
-      <div
-        className={`RightSection${isDark ? " dark" : ""}`}
-      >
+      <div className={`RightSection${isDark ? " dark" : ""}`}>
         <TodayImportant />
         <WeatherHour />
       </div>

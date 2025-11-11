@@ -30,31 +30,23 @@ const WeatherHour = () => {
   const realWeatherHour = changeDt.filter((item) => {
     return item.dt > date;
   });
-  const eightLengthWeatherHour = realWeatherHour.slice(
-    0,
-    8
-  );
+  const eightLengthWeatherHour = realWeatherHour.slice(0, 8);
 
   return (
     <div className="WeatherHour">
       <div className="WeatherHour_title">시간대별 날씨</div>
       <div className="WeatherHour_div">
         {eightLengthWeatherHour.map((item) => {
-          let realTime = item.dt.toLocaleTimeString(
-            "en-US",
-            {
-              hour: "numeric",
-              hour12: true,
-            }
-          );
+          let realTime = item.dt.toLocaleTimeString("en-US", {
+            hour: "numeric",
+            hour12: true,
+          });
           let deg = item.wind.deg;
           return (
             <WeatherHourItem
               time={realTime}
               icon={item.weather[0].icon}
-              windIcon={`${
-                isDark ? darkwindSpeed : windIcon
-              }`}
+              windIcon={`${isDark ? darkwindSpeed : windIcon}`}
               temp={Math.trunc(item.main.temp)}
               wind={Math.trunc(item.wind.speed)}
               deg={deg}

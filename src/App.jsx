@@ -11,8 +11,7 @@ export const SearchLocationContext = createContext();
 export const IsDarkContext = createContext();
 
 function App() {
-  const WEATHER_API_KEY = import.meta.env
-    .VITE_WEATHER_API_KEY;
+  const WEATHER_API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
   const KAKAO_API_KEY = import.meta.env.VITE_KAKAO_API_KEY;
 
   const [coords, setCoords] = useState({
@@ -105,16 +104,10 @@ function App() {
   };
 
   // 로딩기능 만들기
-  const isLoading =
-    !weatherData ||
-    !krAddressData ||
-    !fiveWeather ||
-    !airData;
+  const isLoading = !weatherData || !krAddressData || !fiveWeather || !airData;
 
   const error = () => {
-    alert(
-      "위치 정보를 가져올 수 없어 기본 위치(서울 종로구)로 설정합니다."
-    );
+    alert("위치 정보를 가져올 수 없어 기본 위치(서울 종로구)로 설정합니다.");
     setCoords({ lat: 37.5665, lon: 126.978 });
   };
 
@@ -136,9 +129,7 @@ function App() {
     if (isDark) {
       document.querySelector("body").classList.add("dark");
     } else {
-      document
-        .querySelector("body")
-        .classList.remove("dark");
+      document.querySelector("body").classList.remove("dark");
     }
   }, [isDark]);
 
@@ -146,25 +137,16 @@ function App() {
     <div>
       {isLoading ? (
         <div className="AppLoading">
-          <div
-            className="spinner-border text-primary"
-            role="status"
-          >
-            <span className="visually-hidden">
-              Loading...
-            </span>
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
           </div>
           <div>날씨 정보를 불러오는 중입니다...</div>
         </div>
       ) : (
         <IsDarkContext.Provider value={isDark}>
           <WeatherContext.Provider value={weatherData}>
-            <AddressContext.Provider
-              value={{ krAddressData, changeAddress }}
-            >
-              <FiveWeatherContext.Provider
-                value={fiveWeather}
-              >
+            <AddressContext.Provider value={{ krAddressData, changeAddress }}>
+              <FiveWeatherContext.Provider value={fiveWeather}>
                 <AirDataContext.Provider value={airData}>
                   <SearchLocationContext.Provider
                     value={{
@@ -175,9 +157,7 @@ function App() {
                     }}
                   >
                     <Header
-                      getCurrentLocation={
-                        getCurrentLocation
-                      }
+                      getCurrentLocation={getCurrentLocation}
                       onDark={onDark}
                       isDark={isDark}
                     />
